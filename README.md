@@ -1,2 +1,2 @@
-# Lond-term-habit-tracker
+# Long-term-habit-tracker
 dab
