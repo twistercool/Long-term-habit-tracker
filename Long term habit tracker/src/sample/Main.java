@@ -30,8 +30,8 @@ public class Main extends Application
         //sets the bottom of the borderpane
         GoalsWindow goalWindow = new GoalsWindow();
         root.setBottom(goalWindow.GetPane());
-        /////
 
+        //sets up the stage with the scene (content of window)
         Scene scene = new Scene(root, 560, 280);
         primaryStage.setScene(scene);
 

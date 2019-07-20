@@ -20,22 +20,9 @@ public class GoalsWindow {
     public GoalsWindow()
     {
 
-        Goal goal1 = new Goal("goal1", "contentofgoal1");
-        Goal goal2 = new Goal("goal2", "contentofgoal2");
+        LoadGoals(); //loads goals (duh)
 
-        //testing
-
-        Goal goalX = new Goal("goal1", "contentofgoal1");
-        Goal goalX2 = new Goal("goal2", "contentofgoal2");
-
-        //tests^^^
-
-        //goalsList.add(goal1);
-        //goalsList.add(goal2);
-
-        LoadGoals();
-
-        for (int i = 0; i < goalsList.size(); i++)
+        for (int i = 0; i < goalsList.size(); i++)  //for all goals in goalsList, display them in the gridpane
         {
             Goal goal = goalsList.get(i);
             Label nameLabel = new Label(goal.GetName());
@@ -68,14 +55,13 @@ public class GoalsWindow {
 
     public void LoadGoals() {
         System.out.print("Begin loading quote goals...");
-        int nbOfGoals = 0;
+        int nbOfGoals = 0; //for counting the loaded goals
         try{
-            URL url = getClass().getResource("Goals_data.csv");
-            CSVReader reader = new CSVReader(new FileReader(new File(url.toURI()).getAbsolutePath()));
-            String [] line;
-            //skip the first row (column headers)
-            reader.readNext();
-            while ((line = reader.readNext()) != null) {
+            URL url = getClass().getResource("Goals_data.csv");  //finds the csv file
+            CSVReader reader = new CSVReader(new FileReader(new File(url.toURI()).getAbsolutePath())); // initialises the reader to the file
+            String [] line; //array of string of a single line in the csv file
+            reader.readNext();  //skip the first row (column headers)
+            while ((line = reader.readNext()) != null) {  //if the line is empty it stops reading
                 String goalName = line[0];
                 String goalContent= line[1];
                 String goalIsDoneString = line[2];
@@ -88,14 +74,14 @@ public class GoalsWindow {
                     goalIsDone = false;
                 }
 
-                Goal goal = new Goal(goalName, goalContent, goalIsDone);
-                goalsList.add(goal);
-                nbOfGoals++;
+                Goal goal = new Goal(goalName, goalContent, goalIsDone);  //creates a goal with the info from a line in the csv file
+                goalsList.add(goal);  //adds the goal to goalsList
+                nbOfGoals++;   //counts the nb of goals loaded
             }
-        } catch(IOException | URISyntaxException e){
+        } catch(IOException | URISyntaxException e){   //exception handling
             System.out.println("Failure! Something went wrong");
             e.printStackTrace();
         }
-        System.out.println("Success! Number of loaded quotes: " + nbOfGoals);
+        System.out.println("Success! Number of loaded goals: " + nbOfGoals);
     }
 }
