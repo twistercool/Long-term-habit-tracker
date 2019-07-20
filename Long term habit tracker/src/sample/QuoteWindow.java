@@ -38,11 +38,11 @@ public class QuoteWindow {
         return quotePane;
     }
 
-    public void LoadQuotes() {
+    private void LoadQuotes() {
         System.out.print("Begin loading quote dataset...");
         int nbOfQuotes = 0;
         try{
-            URL url = getClass().getResource("Quote_data.csv");  //finds the csv file
+            URL url = getClass().getResource("\\Data\\Quote_data.csv");  //finds the csv file
             CSVReader reader = new CSVReader(new FileReader(new File(url.toURI()).getAbsolutePath())); // initialises the reader to the file
             String [] line;
             //skip the first row (column headers)

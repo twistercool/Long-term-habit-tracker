@@ -53,18 +53,19 @@ public class GoalsWindow {
         return goalsList;
     }
 
-    public void LoadGoals() {
+    private void LoadGoals() {
         System.out.print("Begin loading quote goals...");
         int nbOfGoals = 0; //for counting the loaded goals
         try{
-            URL url = getClass().getResource("Goals_data.csv");  //finds the csv file
+            URL url = getClass().getResource("\\Data\\Goals_data.csv");  //finds the csv file
             CSVReader reader = new CSVReader(new FileReader(new File(url.toURI()).getAbsolutePath())); // initialises the reader to the file
             String [] line; //array of string of a single line in the csv file
             reader.readNext();  //skip the first row (column headers)
             while ((line = reader.readNext()) != null) {  //if the line is empty it stops reading
                 String goalName = line[0];
-                String goalContent= line[1];
+                String goalContent = line[1];
                 String goalIsDoneString = line[2];
+                //System.out.println(goalName + " dabseparateur " + goalContent + " dabseparateur " + goalIsDoneString);
                 boolean goalIsDone = false;
                 if (goalIsDoneString.equals("TRUE"))
                 {
