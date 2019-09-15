@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import com.opencsv.CSVReader;
+import java.util.Random;
 
 
 public class QuoteWindow {
@@ -20,16 +21,12 @@ public class QuoteWindow {
 
     public QuoteWindow()
     {
+        selectRandomQuote();  //selects a random quote
 
-        LoadQuotes();
-        quote = "\"" + quoteList.get(2) + "\"";
-        Label quoteLabel = new Label(quote); //have to find another way to choose the quote, it's arbitrary here
-
+        Label quoteLabel = new Label(quote);
 
         quotePane.add(quoteLabel, 1 , 1);
         quotePane.setMinSize(100, 75);
-
-
     }
 
 
@@ -38,7 +35,8 @@ public class QuoteWindow {
         return quotePane;
     }
 
-    private void LoadQuotes() {
+    private void LoadQuotes()
+    {
         System.out.print("Begin loading quote dataset...");
         int nbOfQuotes = 0;
         try{
@@ -59,4 +57,11 @@ public class QuoteWindow {
         System.out.println("Success! Number of loaded quotes: " + nbOfQuotes);
     }
 
+    private String selectRandomQuote()
+    {
+        LoadQuotes();
+        Random rand = new Random();
+        quote = quoteList.get(rand.nextInt(quoteList.size()));  //gets a random quote from the list
+        return quote;
+    }
 }

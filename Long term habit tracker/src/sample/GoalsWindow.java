@@ -35,9 +35,9 @@ public class GoalsWindow {
             else {
                 isDoneLabel.setText("NOT done");
             }
-            pane.add(nameLabel, 1, i);
-            pane.add(contentLabel, 2, i);
-            pane.add(isDoneLabel, 3, i);
+            pane.add(nameLabel, 0, i);
+            pane.add(contentLabel, 1, i);
+            pane.add(isDoneLabel, 2, i);
         }
     }
 

@@ -1,4 +1,4 @@
 ﻿Goals,Content,Boolean value
-goal1,goalcontent1,TRUE
-goal2,goalcontent2,FALSE
+"goal1,",goalcontent1,TRUE
+goal2,"goalcontent2,",FALSE
 goal3,goalcontent3,TRUE
