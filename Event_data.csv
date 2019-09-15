@@ -1,0 +1,4 @@
+﻿Start, End, Title, Subtext, Type
+2019-09-15T16:00+02:00[Europe/Paris],2019-09-15T17:00+02:00[Europe/Paris],eventTitle1,enventSubtext1,0
+2019-09-15T17:00+02:00[Europe/Paris],2019-09-15T18:00+02:00[Europe/Paris],eventTitle2,enventSubtext2,1
+2019-09-15T18:00+02:00[Europe/Paris],2019-09-15T19:00+02:00[Europe/Paris],eventTitle3, enventSubtext3,2
