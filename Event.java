@@ -46,6 +46,18 @@ public class Event {
         this.eventType = eventType;
     }
 
+    public String returnStringEventStart () {
+        String hours = (eventStart.getHour()<10) ? "0" + eventStart.getHour() : "" + eventStart.getHour();
+        String minutes = (eventStart.getMinute()<10) ? "0" + eventStart.getMinute() : "" + eventStart.getMinute();
+        return "" + hours + ":" + minutes;
+    }
+
+    public String returnStringEventEnd () {
+        String hours = (eventEnd.getHour()<10) ? "0" + eventEnd.getHour() : "" + eventEnd.getHour();
+        String minutes = (eventEnd.getMinute()<10) ? "0" + eventEnd.getMinute() : "" + eventEnd.getMinute();
+        return "" + hours + ":" + minutes;
+    }
+
     public ZonedDateTime returnEventStart () {
         return eventStart;
     }

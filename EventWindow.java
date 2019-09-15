@@ -10,25 +10,60 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import java.time.*;
 
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.*;
+
 public class EventWindow {
 
     private ArrayList<Event> eventList;
+    private GridPane titlePane, eventsPane;
 
-    public EventWindow (int nb) {
-        eventList = new ArrayList<Event>();
+    public EventWindow () {
         LoadEvents();
-        eventList.get(nb).PrintAllInfos();
+        GenerateEventsGridPane();
+    }
+
+    private void GenerateEventsGridPane () {
+        GenerateEventsTitle();
+        GenerateEventsEvent();
+    }
+
+    private void GenerateEventsTitle () {
+        titlePane = new GridPane();
+        Label titleLabel = new Label("EVENT");
+        titlePane.add(titleLabel, 0, 0);
+    }
+
+    private void GenerateEventsEvent () {
+        eventsPane = new GridPane();
+        for (int i=0; i<eventList.size(); i++) {
+            Event event = eventList.get(i);
+            Label eventTitleLabel = new Label(event.returnEventTitle() + " ");
+            Label eventSubtextLabel = new Label(event.returnEventSubtext() + " ");
+            Label eventDateLabel = new Label(event.returnStringEventStart() + "-" + event.returnStringEventEnd());
+            eventsPane.add(eventTitleLabel, 0, i + 1);
+            eventsPane.add(eventSubtextLabel, 1, i + 1);
+            eventsPane.add(eventDateLabel, 2, i + 1);
+        }
+    }
+
+    public GridPane returnTitleGridPane () {
+        return titlePane;
+    }
+
+    public GridPane returnEventGridPane () {
+        return eventsPane;
     }
 
     private void LoadEvents() {
         System.out.print("Begin loading event dataset...");
+        eventList = new ArrayList<Event>();
         String fileName = "data/Event_data.csv";
         Path myPath = Paths.get("src/sample/" + fileName);
         CSVParser parser = new CSVParserBuilder().withSeparator(',').build();
