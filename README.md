@@ -1,2 +1,2 @@
 # Long-term-habit-tracker
-dab
+Abandonned for now, might do it again with electron and/or angular
